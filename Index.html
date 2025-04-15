@@ -1,0 +1,38 @@
+Index.html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign in with Google</title>
+    <script src="server.js" type="module" defer></script>
+</head>
+
+<body>
+    <h2>Sign in with Google</h2>
+    <button id="googleSignInBtn">Sign in with Google</button>
+</body>
+
+</html>
+
+
+Server.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAl2Gl3k7LIInG5kiKW8t-iNc0CkL90Ppg",
+    authDomain: "login-941f7.firebaseapp.com",
+    projectId: "login-941f7",
+    storageBucket: "login-941f7.firebasestorage.app",
+    messagingSenderId: "642134801188",
+    appId: "1:642134801188:web:6a6afcebe3db4e8cc1d1b1",
+    measurementId: "G-QSCP1YPW8F"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+document.getElementById("googleSignInBtn").addEventListener("click", () => {
+    signInWithPopup(auth, provider)
+});
